@@ -52,11 +52,11 @@ const DisplayQuiz = ({ quiz, setQuiz, score, setScore}) => {
             <div>
               <h2>Quiz Completed!</h2>
               <p>Your Score: {score}</p>
-              <button onClick={() => setQuiz(null)}>Back to Quizzes</button>
             </div>
           ) : (
             renderQuestion()
           )}
+        <button onClick={() => setQuiz(null)}>Back to Quizzes</button>
         </div>
       );
     }
