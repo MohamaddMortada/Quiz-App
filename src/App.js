@@ -14,7 +14,7 @@ const App = () => {
       {!Quiz ? (
         <SelectedQuiz Data={Data} setQuiz={setQuiz} />
       ):(
-      <DisplayQuiz Quiz={Quiz} setQuiz={setQuiz} score={score} setScore={setScore} />
+      <DisplayQuiz quiz={Quiz} setQuiz={setQuiz} score={score} setScore={setScore} />
       )}
 
     </div>
