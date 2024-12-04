@@ -10,7 +10,7 @@ const App = () => {
     <div className="App">
       <h1>Quiz App</h1>
         <SelectedQuiz Data={Data} setQuiz={setQuiz} />
-        <DisplayQuiz Quiz={Quiz} setQuiz={setQuiz} />
+        <DisplayQuiz Quiz={Quiz} setQuiz={setQuiz}/>
     </div>
   );
 };

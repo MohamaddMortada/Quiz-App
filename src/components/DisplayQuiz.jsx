@@ -1,9 +1,25 @@
 import React, { useState } from 'react';
 
-const DisplayQuiz = ({ Quiz, setQuiz}) => {
+const DisplayQuiz = ({ Quiz, setQuiz, score, setScore}) => {
 
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const handleAnswer = (answer) => {};
+  const [quizCompleted, setQuizCompleted] = useState(false);
+  const handleAnswer = (answer) => {
+
+    const question = Quiz.questions[currentQuestionIndex];
+    const isCorrect = answer === question.answer;
+    if (isCorrect) {
+      setScore((prev) => prev + 10);
+    }
+
+    if (currentQuestionIndex + 1 < Quiz.questions.length) {
+      setCurrentQuestionIndex((prev) => prev + 1);
+    } else {
+      setQuizCompleted(true);
+    }
+};
+
+  const renderQuestion = () => {
   const question = Quiz.questions[currentQuestionIndex];
 
     if (question.type === "mcq") {
@@ -28,6 +44,21 @@ const DisplayQuiz = ({ Quiz, setQuiz}) => {
           </div>
         );
       }
+      return (
+        <div>
+          <h2>{Quiz.title}</h2>
+          {quizCompleted ? (
+            <div>
+              <h2>Quiz Completed!</h2>
+              <p>Your Score: {score}</p>
+              <button onClick={() => setQuiz(null)}>Back to Quizzes</button>
+            </div>
+          ) : (
+            renderQuestion()
+          )}
+        </div>
+      );
+    }
 };
 
 export default DisplayQuiz;
