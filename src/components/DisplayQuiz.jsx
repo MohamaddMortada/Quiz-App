@@ -17,7 +17,17 @@ const DisplayQuiz = ({ Quiz, setQuiz}) => {
           ))}
         </div>
       );
-    } 
+    } else if (question.type === "input") {
+        let userInput = "";
+        return (
+          <div>
+            <p>{question.question}</p>
+            <input type="text" onChange={(e) => (userInput = e.target.value)}
+            />
+            <button onClick={() => handleAnswer(userInput)}>Submit</button>
+          </div>
+        );
+      }
 };
 
 export default DisplayQuiz;
